@@ -6,7 +6,7 @@ import { Navbar } from './NavDatas'
 const Sidebar = () => {
   return (
     <SidebarC>
-        <Personal>
+        {/* <Personal>
           <Personal.Photo>
              <img src={PersonalPhoto} alt="" />
              <Personal.Photo.Live />
@@ -15,7 +15,8 @@ const Sidebar = () => {
             <h3>Dilfuza Qodirova</h3>
             <p>@username</p>
           </Personal.Name>
-        </Personal>
+        </Personal> */}
+       <button> Sigin In</button>
         <SidebarC.Menu>
           {
             Navbar.map(item => {
