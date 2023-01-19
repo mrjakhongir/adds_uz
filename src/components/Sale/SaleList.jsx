@@ -7,9 +7,9 @@ import laptop from "../../assets/png/laptop.png";
 const SaleList = () => {
 
   const salesData = [
-    {id:1, brandLogo:logo, brandName:"Texnomart", image:laptop, product:"Neo QLED 4K Smart TV QN90A", oldPrice:'1200$', price:"1000$", view:"335k" },
-    {id:2, brandLogo:logo, brandName:"Texnomart", image:laptop, product:"Neo QLED 4K Smart TV QN90A", oldPrice:'1200$', price:"1000$", view:"335k" },
-    {id:3, brandLogo:logo, brandName:"Texnomart", image:laptop, product:"Neo QLED 4K Smart TV QN90A", oldPrice:'1200$', price:"1000$", view:"335k" }
+    {id:1, companyLogo:logo, companyName:"Texnomart", image:laptop, product:"Neo QLED 4K Smart TV QN90A", oldPrice:'1200$', price:"1000$", view:"335k" },
+    {id:2, companyLogo:logo, companyName:"Apple", image:laptop, product:"Neo QLED 4K Smart TV QN90A", oldPrice:'1200$', price:"1000$", view:"335k" },
+    {id:3, companyLogo:logo, companyName:"Tesla", image:laptop, product:"Neo QLED 4K Smart TV QN90A", oldPrice:'1200$', price:"1000$", view:"335k" },
   ]
 
   return (

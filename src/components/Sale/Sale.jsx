@@ -5,14 +5,14 @@ import { Action } from "../Buttons/style";
 
 const Sale = (props) => {
 
-  const {brandLogo, brandName, image, product, oldPrice, price, view} = props
+  const {companyLogo, companyName, image, product, oldPrice, price, view} = props
 
   return (
     <SaleC>
       <SaleC.Header>
         <div>
-          <img className="sale-logo" src={brandLogo} alt="" />
-          <p>Texnomart</p>
+          <img className="sale-logo" src={companyLogo} alt="" />
+          <p>{companyName}</p>
         </div>
         <button>Follow me</button>
       </SaleC.Header>
@@ -24,7 +24,7 @@ const Sale = (props) => {
       </SaleC.ImageContainer>
       <SaleC.Info>
         <p className="product-name">{product}</p>
-        <p className="brand-name">{brandName}</p>
+        <p className="brand-name">{companyName}</p>
         <p className="old-price">{oldPrice}</p>
         <div className="price-view">
           <p className="price">{price}</p>

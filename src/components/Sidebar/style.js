@@ -36,6 +36,10 @@ right: -4px;
 `
 SidebarC.Menu = styled.div`
 margin-top: 15px;
+.active{
+    cursor: pointer;
+    background-color: #CCD8F5;
+}
 `
 export const NavItem = styled(NavLink)`
 display: flex;
@@ -50,7 +54,6 @@ color: #14191F;
 text-transform: capitalize;
 :hover{
     cursor: pointer;
-    background-color: #CCD8F5;
 }
 `
 NavItem.Icon = styled.div`
