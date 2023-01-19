@@ -8,6 +8,6 @@ export const Navbar = [
     {id:1, name:'Subscribed', link:"/subscribe", icon:subscribe},
     {id:2, name:'chat', link:"/chat", icon:chat},
     {id:3, name:'news', link:"/news", icon:news},
-    {id:4, name:'sale', link:"/sale", icon:sale},
+    {id:4, name:'sale', link:"/sales", icon:sale},
     {id:5, name:'settings', link:"/settings", icon:settings},
 ]

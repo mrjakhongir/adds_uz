@@ -1,8 +1,5 @@
 // <-------Header----->
 import styled from 'styled-components'
-import {ReactComponent as bookmark} from '../../assets/icon/bookmark.svg'
-import {ReactComponent as noLive} from '../../assets/icon/islive.svg'
-import {ReactComponent as person} from '../../assets/icon/person.svg'
 import {ReactComponent as search} from '../../assets/icon/search.svg'
 
 export const HeaderC = styled.div`
@@ -41,24 +38,7 @@ display: flex;
 align-items: center;
 }
 `
-export const MarkPersonal = styled.div`
-width: 40px;
-height: 40px;
-background: #F9F9F9;
-border-radius: 20px;
-position: relative;
-display: flex;
-justify-content: center;
-align-items: center;
-margin-left: 16px;
-`
-MarkPersonal.Bookmark = styled(bookmark)``
-MarkPersonal.Person = styled(person)``
-MarkPersonal.NoLive = styled(noLive)`
-position:absolute;
-top: 0px;
-right: 0px
-`
+
 export const Search = styled(search)`
 position: absolute;
 top: 16px;

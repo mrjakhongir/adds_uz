@@ -1,4 +1,5 @@
 // <------Sidebar----->
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import {ReactComponent as live} from '../../assets/icon/live.svg'
 export const SidebarC = styled.div`
@@ -36,7 +37,7 @@ right: -4px;
 SidebarC.Menu = styled.div`
 margin-top: 15px;
 `
-export const NavItem = styled.a`
+export const NavItem = styled(NavLink)`
 display: flex;
 align-items: center;
 padding: 10px 10px;
