@@ -8,7 +8,6 @@ import { OpenerC, Container } from "./style";
 import Sneak from "../../assets/png/sneak.png";
 import Pont from "../../assets/png/photo.png";
 import Footer from "../../components/Foooter/Footer";
-import BrandsList from "../../components/Brands/BrandsList";
 import { Outlet } from "react-router-dom";
 
 const Opener = () => {

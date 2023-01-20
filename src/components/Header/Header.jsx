@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import AddBtn from "../Buttons/AddBtn";
-import { HeaderC, MarkPersonal, Search } from "./style";
+import { Action } from "../Buttons/style";
+import { HeaderC, Search } from "./style";
 
 const Header = () => {
 
@@ -18,14 +19,14 @@ const Header = () => {
         }
       </div>
       <div className="mark-personal">
-        <MarkPersonal>
-          <MarkPersonal.Bookmark />
-          <MarkPersonal.NoLive />
-        </MarkPersonal>
-        <MarkPersonal>
-          <MarkPersonal.Person />
-          <MarkPersonal.NoLive />
-        </MarkPersonal>
+        <Action  mr16>
+          <Action.Bookmark/>
+          <Action.NoLive />
+        </Action>
+        <Action>
+          <Action.Person />
+          <Action.NoLive />
+        </Action>
       </div>
     </HeaderC>
   );
