@@ -22,7 +22,7 @@ const Opener = () => {
             <Brands />
           </div>
           <div className="col col-2">
-            <Category />
+            {/* <Category /> */}
             <Outlet/>
           </div>
           <div className="main_photo">
