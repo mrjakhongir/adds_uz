@@ -7,8 +7,6 @@ import Category from "../../components/Category/Category";
 import { OpenerC, Container } from "./style";
 import Sneak from "../../assets/png/sneak.png";
 import Pont from "../../assets/png/photo.png";
-
-import BrandsList from "../../components/Brands/BrandsList";
 import { Outlet } from "react-router-dom";
 
 const Opener = () => {
