@@ -1,8 +1,9 @@
 import React from 'react'
 import Sale from './Sale'
-import { SaleListC } from './style'
+import { SaleListC,SaleCon } from './style'
 import logo from "../../assets/png/brands/2.png";
-import laptop from "../../assets/png/laptop.png";
+import laptop from "../../assets/png/coder.png";
+import Adverspage from '../Advers/Adverspage';
 
 const SaleList = () => {
 
@@ -13,7 +14,8 @@ const SaleList = () => {
   ]
 
   return (
-    <SaleListC>
+   <SaleCon>
+       <SaleListC>
       {
         salesData.map(sale => {
           return(
@@ -22,6 +24,8 @@ const SaleList = () => {
         })
       }
     </SaleListC>
+      <Adverspage />
+   </SaleCon>
   )
 }
 
