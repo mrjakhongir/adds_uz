@@ -2,7 +2,6 @@
 import styled from 'styled-components'
 import {ReactComponent as live} from '../../assets/icon/live.svg'
 export const SidebarC = styled.div`
-width: 265px;
 height:auto;
 background: #FFFFFF;
 border-radius: 6px;

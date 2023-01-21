@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 
 export const BrandsC = styled.div`
-width: 265px;
+
 height: 315px;
 background: #fff;
 border-radius: 6px;
@@ -70,13 +70,19 @@ color: #1754F2;
 // <--------BrandsList--------->
 
 export const BrandsListC = styled.div`
-width: 100%;
-height: auto;
-margin-top: 22px;
 box-sizing: border-box;
-background-color: #fff;
 border-radius: 8px;
 display: flex;
 flex-wrap: wrap;
 justify-content: space-between;
+align-items: flex-start;
+
+
+
+`
+export const BrandCon = styled.div`
+width: 100%;
+border-radius: 8px;
+display: flex;
+
 `

@@ -6,6 +6,8 @@
 *{
   margin: 0;
   padding: 0;
+  font-family: "Source-Sans-Pro";
+
 }
 a{
   display: block;
@@ -15,7 +17,7 @@ a{
 body {
   margin: 0;
   padding: 0;
-  background-color: #D4CFCF;
+  background-color: #F5F5F5;
   font-family: "Source-Sans-Pro";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
