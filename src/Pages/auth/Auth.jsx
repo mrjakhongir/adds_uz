@@ -21,7 +21,6 @@ const Auth = () => {
             </div>
 
             <div className="col col-2">
-            {/* <HomePage /> */}
               <Outlet/>
             </div>    
           </main>
