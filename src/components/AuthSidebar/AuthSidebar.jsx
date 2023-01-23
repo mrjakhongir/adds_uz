@@ -2,11 +2,16 @@ import React from 'react'
 import { SidebarC, Button,  NavItem } from './style'
 
 import { Navbar } from './NavDatas'
+import { Link } from 'react-router-dom'
 
 const AuthSidebar = () => {
     return (
         <SidebarC>
-         <Button>sigin in</Button>
+         <Button>
+           <Link to="siginin" >
+             siginin
+           </Link>
+         </Button>
       
             <SidebarC.Menu>
               {
