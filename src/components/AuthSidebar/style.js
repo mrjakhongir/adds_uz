@@ -1,9 +1,6 @@
 // <------Sidebar----->
 import styled from 'styled-components'
-import {ReactComponent as live} from '../../assets/icon/live.svg'
 export const SidebarC = styled.div`
-
-
 height:auto;
 background: #FFFFFF;
 border-radius: 6px;
@@ -21,7 +18,11 @@ export const Button = styled.button`
  background: #1754F2;
  color:white;
  border:none;
- cursor:pointer
+ cursor:pointer;
+    .link{
+        color:white;
+    }
+ 
 `
 SidebarC.Menu = styled.div`
 margin-top: 15px;
