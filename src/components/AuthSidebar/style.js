@@ -1,5 +1,6 @@
 // <------Sidebar----->
 import styled from 'styled-components'
+import {NavLink} from 'react-router-dom'
 export const SidebarC = styled.div`
 height:auto;
 background: #FFFFFF;
@@ -27,7 +28,7 @@ export const Button = styled.button`
 SidebarC.Menu = styled.div`
 margin-top: 15px;
 `
-export const NavItem = styled.a`
+export const NavItem = styled(NavLink)`
 display: flex;
 align-items: center;
 padding: 10px 10px;
