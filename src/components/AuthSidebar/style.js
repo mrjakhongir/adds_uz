@@ -1,6 +1,8 @@
 // <------Sidebar----->
 import styled from 'styled-components'
+
 import { NavLink } from 'react-router-dom'
+
 export const SidebarC = styled.div`
 height:auto;
 background: #FFFFFF;

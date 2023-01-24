@@ -114,7 +114,7 @@ SaleC.Actions = styled.div`
 // <------------SaleList--------
 export const SaleListC = styled.div`
   margin-bottom: 10px;
-  margin-left: 15px;
+  // margin-left: 15px;
 `;
 export const ClockIcon = styled(clock)``;
 export const EyeIcon = styled(eye)`
