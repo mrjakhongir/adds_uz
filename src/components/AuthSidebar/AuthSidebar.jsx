@@ -8,8 +8,8 @@ const AuthSidebar = () => {
     return (
         <SidebarC>
          <Button>
-           <Link to="siginin" >
-             siginin
+           <Link to="siginin"  className='link'>
+             Siginin
            </Link>
          </Button>
       
