@@ -5,9 +5,8 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import Brands from "../../components/Brands/Brands";
 import Category from "../../components/Category/Category";
 import { OpenerC, Container } from "./style";
-import Sneak from "../../assets/png/sneak.png";
-import Pont from "../../assets/png/photo.png";
 import { Outlet } from "react-router-dom";
+import Error from '../../components/Error/Error';
 
 const Opener = () => {
   return (
@@ -24,11 +23,11 @@ const Opener = () => {
             </div>
 
             <div className="col col-2">
-            {/* <HomePage /> */}
-              <Outlet/>
+           
+              <Outlet />
             </div>    
           </main>
-
+          <Error />
         </Container>
       </OpenerC>
     </div>
