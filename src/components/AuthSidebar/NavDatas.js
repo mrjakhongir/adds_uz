@@ -4,7 +4,5 @@ export const Navbar = [
   
    
     {id:3, name:'news', link:"/news", icon:news},
-   
- 
-    {id:5, name:'settings', link:"/settings", icon:settings},
+    // {id:5, name:'setting', link:"/setting", icon:settings},
 ]

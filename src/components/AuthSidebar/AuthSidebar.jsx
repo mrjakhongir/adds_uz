@@ -17,7 +17,7 @@ const AuthSidebar = () => {
               {
                 Navbar.map(item => {
                   return(
-                    <NavItem key={item.id}>
+                    <NavItem key={item.id} to={item.link}>
                       <NavItem.Icon>{<item.icon/>}</NavItem.Icon>
                       {item.name}
                     </NavItem>

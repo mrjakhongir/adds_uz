@@ -8,10 +8,15 @@ import Auth from "../Pages/auth/Auth";
 import HomePage from "../components/HomePage/HomePage";
 import SaleList from '../components/Sale/SaleList'
 import Siginin from "../components/regestr/siginin/Siginin";
+import Setting from "../components/Setting/Setting";
+import ActiveCode from "../components/regestr/siginin/ActiveCode";
+import Finsh from "../components/regestr/siginin/Finsh";
+
+
 
 
 const Root = () => {
-  const token =false;
+  const token = false;
   return (
     <RoootC>
       <Routes>
@@ -21,6 +26,13 @@ const Root = () => {
             <Route path="/" element={<HomePage/>} />
             <Route path="/sale" element={<SaleList/>} />
             <Route path="/siginin" element={<Siginin />} />
+            <Route path="/setting" element={<Setting />} />
+            <Route path="/activcode" element={<ActiveCode />} />
+            <Route path="/finsh" element={<Finsh />} />
+       
+            
+         
+
             <Route path='/*' element={<h2>This page come soon!</h2>} />
         </Route>
    

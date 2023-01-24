@@ -18,7 +18,7 @@ export const SigininCon = styled.div`
     }
     .register {
       width: 314px;
-      height: 225px;
+      height: auto;
       padding: 30px;
       top: 80px;
       right: 140px;
@@ -26,6 +26,7 @@ export const SigininCon = styled.div`
       background-color:#F5F5F5;
       position: fixed;
       z-index: 2342342342434;
+     
       .register-title {
         font-style: normal;
         font-weight: 400;
@@ -73,17 +74,20 @@ export const SigininCon = styled.div`
       .reg-btn {
         width: 100%;
         margin-top: 20px;
-        padding: 8px;
+        padding: 10px;
         border-radius: 60px;
         border: none;
         background-color: #1754F2;
         font-style: normal;
         font-weight: 400;
-        font-size: 14px;
+        font-size: 16px;
         line-height: 150%;
         color: #ffffff;
         outline:none;
         cursor: pointer;
       }
+    }
+    .display{
+        display:none;
     }
     ` 
