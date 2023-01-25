@@ -36,7 +36,36 @@ input{
 .mark-personal{
 display: flex;
 align-items: center;
+.siginin{
+    background: #fff;
+    color:blue;
+    text-decoration: underline;
+    
+    
 }
+}
+ a{
+    text-decaration:none;
+    color:#fff;
+    background: #1754F2;
+    padding:1px;
+    border-radius:8px;
+
+    
+    
+    .logo{
+        display:flex;
+        align-items: center;
+         img{
+            width:30px;
+            heght:30px;
+            border-radius:50%;
+         }
+         h1{
+            font-weight: 900;
+         }
+    }
+ }
 `
 
 export const Search = styled(search)`
