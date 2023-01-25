@@ -9,6 +9,7 @@ export const OpenerC = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    gap:15px;
   }
   .main_photo {
     display: flex;
