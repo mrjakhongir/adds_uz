@@ -16,7 +16,7 @@ const Sidebar = () => {
             <p>@username</p>
           </Personal.Name>
         </Personal>
-  
+        
         <SidebarC.Menu>
           {
             Navbar.map(item => {

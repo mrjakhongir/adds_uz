@@ -1,28 +1,31 @@
 
-import React from "react";
-import { useRef } from "react";
+import {useState} from "react";
 import { SigininCon } from "./style";
 import { Link,useNavigate } from "react-router-dom";
 import tel from "../../../assets/icon/tel.svg"
 import HomePage from "../../HomePage/HomePage";
 
 
-const ActiveCode = ({telnumber}) => {
+const ActiveCode = ()=> {
 
-// console.log(telnumber);
+  const telnumber = localStorage.getItem("telnumber")
+
 const navigate = useNavigate();
 
-  const codeRef = useRef();
+const[codeValue,setCodeValue] = useState("")
 
-  const handleFormSubmit = (evt) => {
-    evt.preventDefault();
-    const codeValue = codeRef.current.value;
+
+
+  const handleFormSubmit = () => {
 
     if (codeValue) {
-        fetch(`http://azizbek.samandardev.uz/v1/user/verify/${telnumber}/${codeValue}d`)
+        fetch(`http://azizbek.samandardev.uz/v1/user/verify/${telnumber}/${codeValue}`)
         .then(response => response.json())
         .then(json =>{
-            console.log(json)
+          localStorage.setItem("faceToken",json.access_token)
+            console.log(json.access_token)
+            navigate("/finsh")
+         
         })
         .catch(err => console.log(err))
             
@@ -38,7 +41,7 @@ const navigate = useNavigate();
           <div className="filter-blur"></div>
         </Link>
         <div className="register">
-          <p className="register-title">Log in/registering{telnumber}</p>
+          <p className="register-title">Log in/registering</p>
           <label className="input-name">
             <div className="input-name-icon">
               <img src={tel} alt="" />
@@ -55,15 +58,15 @@ const navigate = useNavigate();
             <div className="input-name-icon">
               <img src={tel} alt="" />
             </div>
-            <form onSubmit={handleFormSubmit} action="#" >
+            <form  action="#" >
               <input
                 type="text"
                 placeholder="code"
-                ref={codeRef}
+                onChange={(e) => setCodeValue(e.target.value)}
               />
             </form>
           </label>
-          <button className="reg-btn">Confirm</button>
+          <button onClick={handleFormSubmit} className="reg-btn">Confirm</button>
         </div>
       </SigininCon>
     </>
