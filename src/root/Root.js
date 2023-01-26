@@ -15,7 +15,7 @@ import NewsList from "../components/News/NewsList";
 
 
 const Root = () => {
-  const token = true;
+  const token = false;
 
   return (
     <RoootC>
