@@ -27,7 +27,6 @@ const Opener = () => {
               <Outlet />
             </div>    
           </main>
-          <Error />
         </Container>
       </OpenerC>
     </div>
