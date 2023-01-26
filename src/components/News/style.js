@@ -1,25 +1,40 @@
-import Styled from 'styled-components'
+import Styled, {css} from 'styled-components'
 
 
 export const NewsC = Styled.div`      
     display: flex;
-    // flex-direction:
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: space-between;
-    // width: 841px;
-    .news{
+    gap: 15px;
+
+    .news__grid {
+        display: grid;        
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 12px;
+        grid-auto-flow: dense;
+    }
+
+    .news,
+    .news__half {
         width: 100%;
         padding: 16px 24px 22px 20px;
         background-color: #fff;
         border-radius: 8px;
         display: flex;
-        justify-content: space-between
-        align-items: flex-start;
-        flex-wrap: wrap;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+    .news {
+        grid-column: span 2;
     }
     .left__col,
     .right__col {
-        width: 50%;
+        width: 100%;
+    }
+    .left__col {
+        display: flex;
+        flex-direction: column;
     }
     .right__col > img {
         width: 100%;
@@ -41,26 +56,11 @@ export const NewsC = Styled.div`
         gap: 16px;
         width: 16px;
         cursor: pointer;
+        margin-top: auto;
     }
+    
 `
-
-export const NewsListC = Styled.div`
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 7px;
-
-    .news__grid {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        // grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-`
-NewsListC.filter = Styled.div`
+NewsC.filter = Styled.div`
     display: flex;
     gap: 4px;
     background-color: #fff;

@@ -6,7 +6,7 @@ import { ReactComponent as eye } from "../../assets/icon/eye.svg";
 
 export const HomeCon = styled.div`
   display: flex;
-   gap: 15px;
+  gap: 15px;
 `;
 export const HomeC = styled.div`
   width: 100%;
@@ -52,7 +52,6 @@ HomeC.Header = styled.div`
   }
 `;
 HomeC.ImageContainer = styled.div`
-
   .sale-img {
     width: 100%;
     border-radius: 8px;
@@ -114,7 +113,6 @@ HomeC.Actions = styled.div`
 // <------------SaleList--------
 export const HomeListC = styled.div`
   margin-bottom: 10px;
-  margin-left: 15px;
 `;
 export const ClockIcon = styled(clock)``;
 export const EyeIcon = styled(eye)`

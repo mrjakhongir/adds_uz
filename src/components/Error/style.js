@@ -1,15 +1,13 @@
 import styled from "styled-components";
 
 export const ErrorDiv = styled.div`
-    background-color: #fff;
     width: 100%;
     height: 100vh;
     max-width: 904px;
     margin: 0 auto;
-    margin-top: 111px;
+    margin-top: -100px;
     display: flex;
     flex-direction: column;
-    
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -51,7 +49,6 @@ export const ErrorDiv = styled.div`
 
     button:hover {
         opacity: .8;
-
     }
 
     div {

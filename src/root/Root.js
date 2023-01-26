@@ -11,7 +11,8 @@ import Siginin from "../components/regestr/siginin/Siginin";
 import Setting from "../components/Setting/Setting";
 import ActiveCode from "../components/regestr/siginin/ActiveCode";
 import Finsh from "../components/regestr/siginin/Finsh";
-import NewsList from "../components/News/NewsList";
+import News from "../components/News/News";
+import Error from "../components/Error/Error";
 
 
 const Root = () => {
@@ -20,6 +21,7 @@ const Root = () => {
   return (
     <RoootC>
       <Routes>
+        <Route path="/*" element={<Error />} />
         <Route path="/" element={token ? <Opener /> : <Auth />}>
 
             <Route path="/brands" element={<BrandsList />} />
@@ -29,8 +31,7 @@ const Root = () => {
             <Route path="/setting" element={<Setting />} />
             <Route path="/activcode" element={<ActiveCode />} />
             <Route path="/finsh" element={<Finsh />} />
-            <Route path="/news" element={<NewsList />} />
-            <Route path='/*' element={<h2>This page come soon!</h2>} />
+            <Route path="/news" element={<News />} />
 
         </Route>
    
