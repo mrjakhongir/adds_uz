@@ -21,9 +21,8 @@ function openRodal(){
   return (
     
     <SidebarC>
-      
 
-      <Personal>
+       <Personal>
         <Personal.Photo>
           <img src={PersonalPhoto} alt="" />
           <Personal.Photo.Live />
@@ -173,6 +172,7 @@ function openRodal(){
           Settings  
         </NavItem>
       </SidebarC.Menu>
+
     </SidebarC>
   )
 }

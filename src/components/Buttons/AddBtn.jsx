@@ -3,7 +3,7 @@ import { AddbtnC } from './style'
 
 const AddBtn = () => {
   return (
-    <AddbtnC>addc</AddbtnC>
+    <AddbtnC>Sigin in</AddbtnC>
   )
 }
 
