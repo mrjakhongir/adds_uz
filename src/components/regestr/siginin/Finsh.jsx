@@ -1,37 +1,47 @@
-import {useState} from "react";
+import { useState, useContext } from "react";
 import { SigininCon } from "./style";
-import { Link,useNavigate} from "react-router-dom";
-import tel from "../../../assets/icon/tel.svg"
+import { Link, useNavigate } from "react-router-dom";
+import tel from "../../../assets/icon/tel.svg";
 import HomePage from "../../HomePage/HomePage";
-
-
+import { Rigister } from "../../../contex/Contex";
 
 const Finsh = () => {
-  const[ful_name,setFulname] = useState("")
-  const[password,setPassword] = useState("")
-  const faceToken = localStorage.getItem("faceToken")
-  const navigate = useNavigate()
+  const [token, setToken] = useContext(Rigister);
+  const [ful_name, setFulname] = useState("");
+  const [password, setPassword] = useState("");
+  const faceToken = localStorage.getItem("faceToken");
 
-  const handleFormSubmit = () => {
+  const navigate = useNavigate();
+
+  const updatePost = async () => {
     if (ful_name && password) {
-      fetch('http://azizbek.samandardev.uz/v1/user/register/finish', {
-          method: 'POST',
-          body: JSON.stringify({
-            full_name: `${ful_name}`,
-            password: `${password}`
-          }),
-          headers: {
-              "authorization": `${faceToken}`,
-              "Content-type": "application/json; charset=UTF-8"}
-          
-      })
-      .then(response => response.json())
-      .then(json =>{
-         console.log(json);
-          navigate("/")
-      })
-  }
-}
+      const requestOptions = {
+        method: "PUT",
+        headers: {
+          Authorization: faceToken,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          full_name: ful_name,
+          password: password,
+        }),
+      };
+      const response = await fetch(
+        "http://azizbek.samandardev.uz/v1/user/register/finish",
+        requestOptions
+      );
+      const data = await response.json();
+      console.log(
+        `{full_name:${data.full_name},access_token:${data.access_token}}`
+      );
+      setToken(
+        `{"full_name":"${data.full_name}","access_token":"${data.access_token}","phone_number":"${data.phone_number}"}`
+      );
+
+      navigate("/");
+    }
+  };
+
   return (
     <>
       <SigininCon>
@@ -41,34 +51,37 @@ const Finsh = () => {
         </Link>
         <div className="register">
           <p className="register-title">Create your permanent password</p>
-          <label className="input-name">
-            <div className="input-name-icon">
-              <img src={tel} alt="" />
-            </div>
-            <form  action="#" >
+          
+            <label className="input-name">
+              <div className="input-name-icon">
+                <img src={tel} alt="" />
+              </div>
+
               <input
                 type="text"
+                value={ful_name}
                 onChange={(e) => setFulname(e.target.value)}
                 placeholder="Full name"
               />
-            </form>
-          </label>
-          <label className="input-name">
-            <div className="input-name-icon">
-              <img src={tel} alt="" />
-            </div>
-            <form  action="#" >
+            </label>
+            <label className="input-name">
+              <div className="input-name-icon">
+                <img src={tel} alt="" />
+              </div>
+
               <input
                 type="text"
+                value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                
                 placeholder="  repeat your password"
               />
-            </form>
-          </label>
-          <button  onClick={handleFormSubmit} className="reg-btn">Register  </button>
+            </label>
+
+            <button onClick={updatePost} className="reg-btn">
+              Register
+            </button>
+         
         </div>
-    
       </SigininCon>
     </>
   );

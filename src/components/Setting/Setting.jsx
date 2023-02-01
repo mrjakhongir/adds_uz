@@ -1,9 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import { useContext } from "react";
 import img from "../../assets/jpg/profil.jpg";
 import {Settings} from "./style"
+import { Rigister } from "../../contex/Contex";
+
+
 
 const Setting = () => {
+  const [token,setToken] = useContext(Rigister)
+    const navigate = useNavigate();
+  const handle = () =>{
+        if(token){
+          setToken( localStorage.setItem("token",""))
+          navigate("/")
+        }
+  }
   return (
     <Settings>
       <div className="setting-con">
@@ -117,7 +129,9 @@ const Setting = () => {
             <p className="setting-language set">English &nbsp;</p>
             <p className="setting-notification set">Notification &nbsp;</p>
             <p className="setting-theme set">Dark theme &nbsp;</p>
-            <p className="settingt-logaut set">Log out</p>
+            <p className="settingt-logaut set" onClick={() => handle()}>
+               Logaut
+            </p>
           </div>
         </div>
       </div>

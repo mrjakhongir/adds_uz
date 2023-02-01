@@ -2,8 +2,13 @@ import React from 'react'
 import { SidebarC, Personal, NavItem } from './style'
 import PersonalPhoto from '../../assets/png/Subtract.png'
 import { Navbar } from './NavDatas'
+import {Rigister} from "../../contex/Contex"
+import { useContext } from 'react'
 
 const Sidebar = () => {
+  const [token,setToken]  = useContext(Rigister)
+  const res = JSON.parse(token)
+  console.log(res);
   return (
     <SidebarC>
         <Personal>
@@ -12,7 +17,7 @@ const Sidebar = () => {
              <Personal.Photo.Live />
           </Personal.Photo>
           <Personal.Name>
-            <h3>Dilfuza Qodirova</h3>
+            <h3>{res.full_name}</h3>
             <p>@username</p>
           </Personal.Name>
         </Personal>

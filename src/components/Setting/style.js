@@ -130,6 +130,9 @@ export const Settings = styled.div `
           margin-right: 16px;
           margin-bottom: 16px;
         }
+        .settingt-logaut{
+          cursor:pointer;
+        }
       }
     }
   }

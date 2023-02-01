@@ -53,7 +53,8 @@ export const SigininCon = styled.div`
           background-color: #F5F5F5;
           border-radius: 8px;
         }
-      
+   
+         
             input {
                 width: 100%;
                 border: none;

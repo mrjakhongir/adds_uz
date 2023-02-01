@@ -1,9 +1,13 @@
 import React from "react";
 import { ClockIcon, EyeIcon, HomeC } from "./style";
+import {Rigister} from "../../contex/Contex"
+import { useContext } from "react";
 
 import { Action } from "../Buttons/style";
+import { Link } from "react-router-dom";
 
 const Card = (props) => {
+  const [token,setToken] = useContext(Rigister)
   const { companyLogo, companyName, image, product, oldPrice, price, view } =
     props;
 
@@ -14,7 +18,7 @@ const Card = (props) => {
           <img className="sale-logo" src={companyLogo} alt="" />
           <p>{companyName}</p>
         </div>
-        <button>Follow me</button>
+         {token ? <button>Follow me</button>: <Link to={"register/siginin"}> <button> Follow me</button></Link> }
       </HomeC.Header>
       <HomeC.ImageContainer>
         <img className="sale-img" src={image} alt="" />

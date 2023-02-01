@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ErrorDiv = styled.div`
+
     width: 100%;
     height: 100vh;
     max-width: 904px;
@@ -45,6 +46,9 @@ export const ErrorDiv = styled.div`
 
         transition: all 150ms linear;
         z-index: 10;
+        a{
+            color:white;
+        }
     }
 
     button:hover {
@@ -52,9 +56,10 @@ export const ErrorDiv = styled.div`
     }
 
     div {
+        font-family: 'Montserrat', sans-serif;
         position: absolute;
         font-size: 400px;
-        color: #E1DFDF;
+        color: #B3B3B3;
         opacity: .2;
         z-index: 1;
     }
