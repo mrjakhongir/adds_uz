@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom'
+import { SignProvider } from './contex/Contex';
+
 import './index.css';
-import './fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf';
+
 import Root from './root/Root';
 
 
@@ -10,7 +12,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
     <BrowserRouter>
-      <Root/>
+   <SignProvider>
+        <Root />
+   </SignProvider>
+   
     </BrowserRouter>
 
 );

@@ -1,6 +1,6 @@
 // <--------AddBtn------->
 
-import {ReactComponent as bookmark} from '../../assets/icon/bookmark.svg'
+import {ReactComponent as bookmark} from '../../assets/icon/save.svg'
 import {ReactComponent as noLive} from '../../assets/icon/islive.svg'
 import {ReactComponent as person} from '../../assets/icon/person.svg'
 import {ReactComponent as chat} from "../../assets/icon/chat.svg"

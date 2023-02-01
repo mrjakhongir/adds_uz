@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import Rodal from 'rodal';
 import 'rodal/lib/rodal.css';
-
 import { SidebarC, Personal, NavItem, Company } from './style'
 import PersonalPhoto from '../../assets/png/Subtract.png'
 import subscribe from '../../assets/icon/subscribe.svg'
@@ -10,28 +9,36 @@ import news from '../../assets/icon/news.svg'
 import sale from '../../assets/icon/sale.svg'
 import settings from '../../assets/icon/settings.svg'
 import search from '../../assets/icon/search.svg'
+import { Navbar } from './NavDatas'
+import {Rigister} from "../../contex/Contex"
+import { useContext } from 'react'
 
 const Sidebar = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  const [token,setToken]  = useContext(Rigister)
+  const res = JSON.parse(token)
+  console.log(res);
 
-const [isOpen, setIsOpen] = useState(false)
 
 function openRodal(){
   setIsOpen(!isOpen)
 }
+
   return (
     
     <SidebarC>
 
-       <Personal>
-        <Personal.Photo>
-          <img src={PersonalPhoto} alt="" />
-          <Personal.Photo.Live />
-        </Personal.Photo>
-        <Personal.Name>
-          <h3>Dilfuza Qodirova</h3>
-          <p>@username</p>
-        </Personal.Name>
-      </Personal>
+        <Personal>
+          <Personal.Photo>
+             <img src={PersonalPhoto} alt="" />
+             <Personal.Photo.Live />
+          </Personal.Photo>
+          <Personal.Name>
+            <h3>{res.full_name}</h3>
+            <p>@username</p>
+          </Personal.Name>
+        </Personal>
+.
       
       <Rodal className='rodal' visible={isOpen} onClose={openRodal} height={480}>
 
@@ -140,6 +147,7 @@ function openRodal(){
             <button>Follow</button>
           </Company>
         </div>
+
         
         <div className='btnGroup'>
           <button onClick={openRodal} className='cancelBtn'>Cancel</button>
