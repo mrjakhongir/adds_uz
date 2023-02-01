@@ -23,9 +23,9 @@ const Opener = () => {
             </div>
 
             <div className="col col-2">
-           
               <Outlet />
-            </div>    
+            </div>   
+
           </main>
         </Container>
       </OpenerC>

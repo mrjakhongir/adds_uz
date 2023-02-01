@@ -1,4 +1,4 @@
-import Styled, {css} from 'styled-components'
+import Styled from 'styled-components'
 
 
 export const NewsC = Styled.div`      
@@ -10,9 +10,11 @@ export const NewsC = Styled.div`
 
     .news__grid {
         display: grid;        
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        // grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         gap: 12px;
         grid-auto-flow: dense;
+        // overflow: scroll;
+        // height: 100vh;
     }
 
     .news,
@@ -24,9 +26,18 @@ export const NewsC = Styled.div`
         display: flex;
         justify-content: space-between;
         box-sizing: border-box;
+        cursor: pointer;
+        gap: 15px;
+        transition: all 150ms cubic-bezier(.5, 0, .5, 1),
+                    
+}
     }
     .news {
         grid-column: span 2;
+    }
+    .news:hover,
+    .news__half:hover {
+        background-color: rgb(252,252,252);
     }
     .left__col,
     .right__col {
@@ -38,6 +49,7 @@ export const NewsC = Styled.div`
     }
     .right__col > img {
         width: 100%;
+        border-radius: 8px;
     }
     .news-date {
         font-size: 12px;
@@ -54,11 +66,9 @@ export const NewsC = Styled.div`
         display: flex;
         align-items: center;
         gap: 16px;
-        width: 16px;
         cursor: pointer;
         margin-top: auto;
     }
-    
 `
 NewsC.filter = Styled.div`
     display: flex;
@@ -81,5 +91,76 @@ NewsC.filter = Styled.div`
     .active {
         background-color: #1754F2;
         color: #fff;
+    }
+`
+
+NewsC.large = Styled.div `
+    padding: 36px 56px 24px 36px;
+    background-color: #fff;
+    border-radius: 8px;
+
+    h1 {
+        font-size: 28px;
+        line-height: 37.52px;  
+        font-weight: bold;
+        margin-bottom: 16px; 
+    }
+    p {
+        font-size: 16px;
+        line-height: 24.72px;
+        font-weight: 400;
+        margin-bottom: 16px;
+    }
+    p:nth-child(even) {
+        margin-bottom: 42px;
+    }
+    .imgContainer {
+        margin: 0 auto;
+        width: 55%;
+        margin-bottom: 58px;
+        position: relative;
+        border-radius: 8px;
+    }
+    .newsImage {
+        width: 100%;
+        border-radius: 8px;
+    }
+    .imgContainer::before,
+    .imgContainer::after {
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        background-color:  rgba(23, 84, 242, 0.1);;
+        border-radius: 50%;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        transition: all 150ms linear;
+        z-index: 10;
+    }
+    .imgContainer::before {
+        content: '<';
+        top: 45%;
+        left: -52px;
+    }
+    .imgContainer::after {
+        content: '>';
+        top: 45%;
+        right: -52px;
+    }
+    .icons {
+        display: flex;
+    }
+    .icons > div {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #F9F9F9;
+        border-radius: 50%;
     }
 `
