@@ -1,24 +1,20 @@
 import React from "react";
 import { BrandsData } from "./BrandsData";
-import { BrandsListC, BrandCardItem,BrandCon} from "./style";
+import { BrandsListC, BrandCardItem} from "./style";
  
 
 const BrandsList = () => {
   return (
-    <BrandCon>
-         <BrandsListC>
-      {BrandsData.map((item) => {
-        return (
-          <BrandCardItem large key={item.id}>
-            {<img src={item.image} />}
-            {item.text}
-          </BrandCardItem>
-        );
-      })}
-    
-    </BrandsListC>
-
-    </BrandCon>
+      <BrandsListC>
+        {BrandsData.map((item) => {
+          return (
+            <BrandCardItem key={item.id}>
+              <img src={item.image} alt=""/>
+              <div>{item.text}</div>
+            </BrandCardItem>
+          );
+        })}
+      </BrandsListC>    
   );
 };
 

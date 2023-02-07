@@ -1,6 +1,6 @@
 import React from "react";
 import { BrandsData } from "./BrandsData";
-import { BrandsC, BrandCardItem, NavItem } from "./style";
+import { BrandsC, BrandSidebar, NavItem } from "./style";
 
 const Brands = () => {
   return (
@@ -12,10 +12,10 @@ const Brands = () => {
       <main>
         {BrandsData.slice(0, 9).map((item) => {
           return (
-            <BrandCardItem key={item.id}>
-              {<img src={item.image} />}
-              {item.text}
-            </BrandCardItem>
+            <BrandSidebar key={item.id}>
+              <img src={item.image} alt="brand logo"/>
+              <div className="brand__text">{item.text}</div>
+            </BrandSidebar>
           );
         })}
       </main>

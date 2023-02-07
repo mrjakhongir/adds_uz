@@ -9,7 +9,6 @@ import news from '../../assets/icon/news.svg'
 import sale from '../../assets/icon/sale.svg'
 import settings from '../../assets/icon/settings.svg'
 import search from '../../assets/icon/search.svg'
-import { Navbar } from './NavDatas'
 import {Rigister} from "../../contex/Contex"
 import { useContext } from 'react'
 
