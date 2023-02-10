@@ -13,7 +13,7 @@ const Opener = () => {
     <div>
       <OpenerC>
         <Container>
-          <Navbar />
+          {/* <Navbar /> */}
           <Header />
 
           <main>

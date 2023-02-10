@@ -12,7 +12,6 @@ const Finsh = () => {
   const faceToken = localStorage.getItem("faceToken");
 
   const navigate = useNavigate();
-
   const updatePost = async () => {
     if (ful_name && password) {
       const requestOptions = {

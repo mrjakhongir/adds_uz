@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext} from "react";
 import {Settings} from "./style"
-import axios from "axios";
+// import axios from "axios";
 
 import { Rigister } from "../../contex/Contex";
 import person from "../../assets/icon/person.svg"
@@ -12,14 +12,14 @@ import ImgUpload from "./ImgUpload";
 
 const Setting = () => {
  const imgData =  JSON.parse(localStorage.getItem("profil_img"))
- 
+ const imgDataValue = imgData.photo_url;
  const [fullName2,setFulname] = useState("")
  const [userName,setUserName] = useState("")
   const [token,setToken] = useContext(Rigister)
- 
 
 
-    const navigate = useNavigate();
+
+  const navigate = useNavigate();
 
   const handle = () =>{
         if(token){
@@ -27,32 +27,33 @@ const Setting = () => {
           navigate("/")
         }
   }
-
+  const res = JSON.parse(token);
   const handleSubmit2 = () =>{
-    const res = JSON.parse(token)
-  
- 
-    if(fullName2 && userName){
-        axios.put("http://azizbek.samandardev.uz/v1/user/profile", {
-          "full_name":`${fullName2}`,
-          "profile_photo":`${imgData.photo_url}`,
-          "username":`${userName}`
 
-        }, {
-            headers: {
-                  'Authorization': `${res.access_token}` ,
-                  'Content-Type': 'multipart/form-data'
-                },
-                onUploadProgress: progressEvent => {
-              const percentCompleted = Math.round(
-                (progressEvent.loaded * 100) / progressEvent.total
-              );
-              console.log(`upload process: ${percentCompleted}%`);}
-          })
-            .then(res => {
-              console.log(res.data)
-              
-            })
+
+    if(fullName2 && userName ){
+      const data =  {
+        full_name: fullName2,
+        profile_photo:imgDataValue ,
+        username:userName,
+      };
+
+      fetch('http://azizbek.samandardev.uz/v1/user/profile', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          "Authorization": res.access_token ,
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          navigate("/register/login")
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
     }
   }
 
@@ -70,13 +71,13 @@ const Setting = () => {
               <div className="input-name-icon">
                 <img src={person} alt="" />
               </div>
-              <input type="text" onChange={(e) => setFulname(e.target.value)}  />
+              <input type="text" onChange={(e) => setFulname(e.target.value)} placeholder={res.full_name}  />
             </label>
             <label className="input-name">
               <div className="input-name-icon">
               <img src={person} alt="" />
               </div>
-              <input type="text"  onChange={(e) => setUserName(e.target.value)} />
+              <input type="text"  onChange={(e) => setUserName(e.target.value)} placeholder={"@"+res.user_name}  />
             </label>
             <br />
            

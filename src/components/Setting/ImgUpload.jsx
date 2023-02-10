@@ -12,7 +12,7 @@ const ImgUpload =  () => {
  
 
     const res = JSON.parse(token)
-    // console.log(res);
+
     const copyToClipboard = () => {
         copy(res.user_name);
         alert(`You have copied "${res.user_name}"`);
@@ -25,7 +25,7 @@ const ImgUpload =  () => {
     let formData = new FormData();
     formData.set('file', file);
      console.log(formData);
-           const handleClisk = () => {
+           if(formData){
         axios.post("http://azizbek.samandardev.uz/v1/media", formData, {
             headers: {
                   'Authorization': `${res.access_token}` ,
@@ -77,7 +77,7 @@ const ImgUpload =  () => {
 
             </div>
           </div>
-          <button onClick={handleClisk}> send</button>
+          
          
           <div onClick={copyToClipboard}  className="profil-text">
             <p>{res.full_name}</p>
