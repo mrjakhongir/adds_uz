@@ -26,16 +26,13 @@ const Finsh = () => {
           password: password,
         }),
       };
-      const response = await fetch(
-        "http://azizbek.samandardev.uz/v1/user/register/finish",
-        requestOptions
-      );
+      const response = await fetch("http://azizbek.samandardev.uz/v1/user/register/finish", requestOptions);
       const data = await response.json();
       console.log(
         `{full_name:${data.full_name},access_token:${data.access_token}}`
       );
       setToken(
-        `{"full_name":"${data.full_name}","access_token":"${data.access_token}","phone_number":"${data.phone_number}"}`
+       JSON.stringify(data)
       );
 
       navigate("/");

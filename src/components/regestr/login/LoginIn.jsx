@@ -20,9 +20,7 @@ const Finsh = () => {
       const data = await response.json();
       console.log(data);
       if (response.status === 200) {
-        setToken(
-          `{"full_name":"${data.full_name}","access_token":"${data.access_token}","phone_number":"${data.phone_number}"}`
-        );
+        setToken(JSON.stringify(data));
       }
 
       navigate("/");

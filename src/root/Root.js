@@ -17,7 +17,7 @@ import { Rigister } from "../contex/Contex";
 import LoginIn from "../components/regestr/login/LoginIn";
 import ForgotPass from "../components/regestr/login/ForgotPass";
 import NewPass from "../components/regestr/login/NewPass";
-import New from "../components/News/New";
+import News from "../components/News/NewsList";
 
 
 

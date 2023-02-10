@@ -24,7 +24,7 @@ return <div>
 </div>
 }
 
-return (
+return(
   <NewsC.large>
     {drawSelectedUser(userId)}
   </NewsC.large>
