@@ -124,6 +124,13 @@ p{
 `
 Personal.Photo  = styled.div`
 position: relative;
+img{
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 5px;
+}
 `
 Personal.Photo.Live = styled(live)`
 position: absolute;

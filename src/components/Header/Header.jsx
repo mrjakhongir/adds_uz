@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import AddBtn from "../Buttons/AddBtn";
+
 import { Action } from "../Buttons/style";
 import { HeaderC, Search } from "./style";
-import logo from "../../assets/logo.jpg"
+import logo from "../../assets/jpg/logo.jpg"
 
 const Header = () => {
 
@@ -11,13 +11,12 @@ const Header = () => {
 
   return (
     <HeaderC>
-      <Link to="/">
-      <Link to="/">
+      <Link to="/" className="href">
          <div className="logo">
            <img src={logo} alt="" />
-            <h1>dds</h1>
+            <p>Adds</p>
          </div>
-      </Link>
+     
       </Link>
       <div className="search">
         <input onChange={e => {setVal(e.target.value)}} type="search" placeholder="search" />

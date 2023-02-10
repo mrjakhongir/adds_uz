@@ -36,11 +36,15 @@ export const Settings = styled.div `
             background-color: white;
             top: 60px;
             right:9px;
+            input{
+              display:none;
+            }
           }
         }
 
         .profil-text {
             line-height: 1;
+            cursor:pointer;
           p {
             font-style: normal;
             font-weight: 600;

@@ -16,17 +16,20 @@ const NewPass = () => {
   const updatePost = async () => {
      console.log(newpass,code,tel)  ;
     if (newpass && code && tel) {
+      console.log(typeof newpass, code, tel)
       const response = await fetch("http://azizbek.samandardev.uz/v1/user/password/set",{
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
+          'accept': 'application/json',
+          "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          code: code,
+          code: String(code),
           new_password:newpass,
           phone_number: tel
         }),
       });
+      
       const data = await response.json();
       console.log(data);
 
@@ -43,8 +46,7 @@ const NewPass = () => {
         </Link>
         <div className="register">
           <p className="register-title">Create your permanent password</p>
-       
-      
+  
             <label className="input-name">
               <div className="input-name-icon">
                 <img src={tel} alt="" />

@@ -44,25 +44,30 @@ align-items: center;
     
 }
 }
- a{
+ .href{
     text-decaration:none;
-    color:#fff;
-    background: #1754F2;
+    color:black;
+    // background: #1754F2;
+    
     padding:1px;
     border-radius:8px;
 
     
     
     .logo{
+        @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
         display:flex;
+        justify-content:center;
         align-items: center;
          img{
-            width:30px;
-            heght:30px;
+            width:47px;
+            heght:47px;
             border-radius:50%;
          }
-         h1{
-            font-weight: 900;
+         p{
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight:700;
+            font-size:35px;
          }
     }
  }
