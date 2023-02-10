@@ -17,7 +17,10 @@ import { Rigister } from "../contex/Contex";
 import LoginIn from "../components/regestr/login/LoginIn";
 import ForgotPass from "../components/regestr/login/ForgotPass";
 import NewPass from "../components/regestr/login/NewPass";
-import News from "../components/News/NewsList";
+
+import News from "../components/News/News";
+import New from "../components/News/New";
+
 
 
 
@@ -43,6 +46,7 @@ const Root = () => {
             <Route path="/register/forgotpass" element={<ForgotPass />} />
             <Route path="/register/login/newpass" element={<NewPass />} />
             <Route path="/news" element={<News />} />
+            <Route path="/new" element={<New />} />
 
         </Route>
    
