@@ -6,7 +6,7 @@ import { ReactComponent as eye } from "../../assets/icon/eye.svg";
 
 export const SaleCon = styled.div`
   display: flex;
-   gap: 15px;
+  gap: 15px;
 `;
 export const SaleC = styled.div`
   width: 100%;

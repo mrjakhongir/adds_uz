@@ -94,7 +94,7 @@ NewsC.filter = Styled.div`
     }
 `
 
-NewsC.large = Styled.div `
+NewsC.Large = Styled.div `
     padding: 36px 56px 24px 36px;
     background-color: #fff;
     border-radius: 8px;

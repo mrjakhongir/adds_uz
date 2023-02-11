@@ -19,11 +19,11 @@ function drawNews(){
           <div className='news-date'>{item.newsDate}</div>
           <div className='news-title'>{item.newsTitle}</div>
           <div className='icons'>
-              <img src={messageIcon} />    
-              <img src={shareIcon} />    
+              <img src={messageIcon} alt=""/>    
+              <img src={shareIcon} alt=""/>    
           </div>                  
         </div>
-        {item.img ? <div className='right__col'><img src={item.img}/></div> : ""}
+        {item.img ? <div className='right__col'><img src={item.img} alt=""/></div> : ""}
       </div>
     ))
   }

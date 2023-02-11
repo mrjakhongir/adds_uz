@@ -45,13 +45,16 @@ export const SidebarC = styled.div`
         position: absolute;
         right: 0;
     }
+    .rodal{
+        // height: 100vh;
+    }
     .rodalTitle {
         font-weight: bold;
         margin-bottom: 8px;
         font-size: 16px;
     }
     .rodalMain {
-        height: 60vh;
+        height: 75%;
         overflow: auto;
         padding: 0 5px;
         margin-bottom: 8px;
@@ -74,12 +77,12 @@ export const SidebarC = styled.div`
         opacity: .8;
     }
     .cancelBtn {
-        background-color: red;
+        background-color: #1754F2;
         color: #fff;
     }
     .saveBtn {
-        background-color: green;
-        color: #fff;
+        background-color: #F9F9F9;
+        color: #14191F;
     }
 `
 export const Personal = styled.div`

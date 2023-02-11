@@ -9,15 +9,13 @@ const Brands = () => {
         <h3>Brands</h3>
         <NavItem to="/brands"> See all</NavItem>
       </BrandsC.Header>
-      <main>
-        {BrandsData.slice(0, 9).map((item) => {
-          return (
-            <BrandSidebar key={item.id}>
-              <img src={item.image} alt="brand logo"/>
-              <div className="brand__text">{item.text}</div>
-            </BrandSidebar>
-          );
-        })}
+      <main className="main">
+        {BrandsData.slice(0, 9).map(item => (
+          <BrandSidebar key={item.id}>
+            <img src={item.image} alt="brand logo"/>
+            <div className="brand__text">{item.text}</div>
+          </BrandSidebar>
+        ))}
       </main>
      
     </BrandsC>

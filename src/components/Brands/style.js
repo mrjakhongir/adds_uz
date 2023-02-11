@@ -2,6 +2,12 @@
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 
+export const BrandContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+`
+
 export const BrandsC = styled.div`
   background: #fff;
   border-radius: 6px;
@@ -9,7 +15,7 @@ export const BrandsC = styled.div`
   padding: 16px;
   box-sizing: border-box;
 
-  main {
+  .main {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     row-gap: 20px;
@@ -19,7 +25,7 @@ export const BrandsC = styled.div`
 BrandsC.Header = styled.div`
 display: flex;
 justify-content: space-between;
-align-items: center;
+align-items: flex-start;
 h3{
   font-weight: 700;
   font-size: 16px;
@@ -35,13 +41,13 @@ export const BrandSidebar = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 6px;
-  width: 100%;
+  font-weight: 400;
+  color: #14191F;
 
   :hover{
     cursor: pointer;
   }
-  font-weight: 400;
-  color: #14191F;
+
   img {
     width: 75%;
   } 
@@ -67,6 +73,7 @@ export const BrandsListC = styled.div`
   display: grid;
   grid-template-columns: repeat(5 , 1fr);
   row-gap: 20px;
+  width: 100%;
 `
 export const BrandCardItem = styled.div`
   :hover{

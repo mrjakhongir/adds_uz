@@ -16,18 +16,18 @@ return <div>
   <h1>{newsTitle}</h1>
   <p>{newsBody}</p>
   <p>{newsBody}</p>
-  {img && <div className='imgContainer'><img className='newsImage' src={img} /></div>}
+  {img && <div className='imgContainer'><img className='newsImage' src={img} alt=""/></div>}
   <div className='icons'>
-    <div><img src={messageIcon} /></div>   
-    <div><img src={shareIcon} /></div>
+    <div><img src={messageIcon} alt=""/></div>   
+    <div><img src={shareIcon} alt=""/></div>
   </div>   
 </div>
 }
 
 return(
-  <NewsC.large>
+  <NewsC.Large>
     {drawSelectedUser(userId)}
-  </NewsC.large>
+  </NewsC.Large>
 )
 }
 

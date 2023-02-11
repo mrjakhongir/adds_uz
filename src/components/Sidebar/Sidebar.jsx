@@ -41,12 +41,12 @@ function openRodal(){
         </Personal>
 
       
-      <Rodal className='rodal' visible={isOpen} onClose={openRodal} height={560}>
+      <Rodal className='rodal' visible={isOpen} onClose={openRodal} height={450}>
 
         <h1 className='rodalTitle'>Subscribed</h1>
         <div className='searchBar'>
           <input type='text' placeholder='Search'/>
-          <img src={search}/>
+          <img src={search} alt="search icon"/>
         </div>
 
         <div className='rodalMain'>

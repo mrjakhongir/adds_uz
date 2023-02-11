@@ -1,10 +1,12 @@
 import React from "react";
+import Adverspage from "../Advers/Adverspage";
 import { BrandsData } from "./BrandsData";
-import { BrandsListC, BrandCardItem} from "./style";
+import { BrandsListC, BrandCardItem, BrandContainer} from "./style";
  
 
 const BrandsList = () => {
   return (
+    <BrandContainer>
       <BrandsListC>
         {BrandsData.map((item) => {
           return (
@@ -14,7 +16,9 @@ const BrandsList = () => {
             </BrandCardItem>
           );
         })}
-      </BrandsListC>    
+      </BrandsListC>   
+      <Adverspage /> 
+    </BrandContainer>
   );
 };
 
