@@ -43,9 +43,14 @@ export const BrandSidebar = styled.div`
   gap: 6px;
   font-weight: 400;
   color: #14191F;
+  padding: 8px;
+  height: 80px;
+  transition: all 120ms ease-in;
 
   :hover{
     cursor: pointer;
+    background-color: #eee;
+    border-radius: 8px;
   }
 
   img {
@@ -69,6 +74,7 @@ export const NavItem = styled(NavLink)`
 export const BrandsListC = styled.div`
   background-color: #fff;
   padding: 25px 0;
+  padding-right: 8px;
   border-radius: 8px;
   display: grid;
   grid-template-columns: repeat(5 , 1fr);
@@ -76,22 +82,25 @@ export const BrandsListC = styled.div`
   width: 100%;
 `
 export const BrandCardItem = styled.div`
-  :hover{
-    cursor: pointer;
-  }
-
+  padding: 8px 0;
   margin: 4px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-
   width: 100%;
   font-size: 20px;
   font-weight: 400;
   line-height: 150%;
   color: #14191F;
+  transition: all 70ms linear;
+
+  :hover{
+    cursor: pointer;
+    background-color: #eee;
+    border-radius: 8px;
+  }
 
   img {
     width: 65%;

@@ -45,9 +45,6 @@ export const SidebarC = styled.div`
         position: absolute;
         right: 0;
     }
-    .rodal{
-        // height: 100vh;
-    }
     .rodalTitle {
         font-weight: bold;
         margin-bottom: 8px;
@@ -141,7 +138,7 @@ bottom:  -4px;
 left: 27px;
 `
 SidebarC.Menu = styled.div`
-margin-top: 15px;
+    margin-top: 15px;
 }
 `
 export const NavItem = styled(NavLink)`
