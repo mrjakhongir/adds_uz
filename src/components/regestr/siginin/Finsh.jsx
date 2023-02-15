@@ -6,6 +6,7 @@ import HomePage from "../../HomePage/HomePage";
 import { Rigister } from "../../../contex/Contex";
 
 const Finsh = () => {
+  const  faceProfilImg = `{"photo_url":"","media_type":"image"}`
   const [token, setToken] = useContext(Rigister);
   const [ful_name, setFulname] = useState("");
   const [password, setPassword] = useState("");
@@ -33,6 +34,7 @@ const Finsh = () => {
       setToken(
        JSON.stringify(data)
       );
+      localStorage.setItem("profil_img",faceProfilImg)
 
       navigate("/");
     }

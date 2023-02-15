@@ -1,15 +1,18 @@
 import { Link,useNavigate } from "react-router-dom";
+import { Rigister } from "../../contex/Contex";
+import { useContext,useEffect} from "react";
 import axios from "axios";
+import "./main.css"
 import img from "../../assets/png/user3.png";
 import copy from "copy-to-clipboard";
-import { Rigister } from "../../contex/Contex";
-import { useContext} from "react";
+
 
 import { useState } from "react";
 
 const ImgUpload =  () => {
     const [token,setToken] = useContext(Rigister)
- 
+    const [file,setFile] = useState();
+    const [per,setPer] = useState()
 
     const res = JSON.parse(token)
 
@@ -17,32 +20,41 @@ const ImgUpload =  () => {
         copy(res.user_name);
         alert(`You have copied "${res.user_name}"`);
      }
-    const [file,setFile] = useState();
     
-
-
- 
     let formData = new FormData();
     formData.set('file', file);
      console.log(formData);
+
+     useEffect(() => {
+      handle()
+     }, [file]);
+
+
+     const handle = () => {
+      
+      formData.set('file', file);
            if(formData){
         axios.post("http://azizbek.samandardev.uz/v1/media", formData, {
             headers: {
-                  'Authorization': `${res.access_token}` ,
+                  'Authorization': `${res.access_token}`,
                   'Content-Type': 'multipart/form-data'
                 },
                 onUploadProgress: progressEvent => {
               const percentCompleted = Math.round(
                 (progressEvent.loaded * 100) / progressEvent.total
               );
-              console.log(`upload process: ${percentCompleted}%`);}
+              console.log(`upload process: ${percentCompleted}%`);
+              setPer(percentCompleted)
+              
+            }
           })
             .then(res => {
               console.log(res.data)
               localStorage.setItem("profil_img", JSON.stringify(res.data))
             })
     }
-
+  
+  }
  
 
 
@@ -52,9 +64,10 @@ const ImgUpload =  () => {
         <div className="seting-profil-con">
         <div className="setting-profil">
           <div className="img-page">
+            <p>{per}</p>
             <img src={res.profile_photo ? res.profile_photo : img} alt="" />
             <div className="chose-file">
-               <label htmlFor="file">
+               <label htmlFor="file" className="labelFile">
                <svg 
                 width="8"
                 height="8"
@@ -99,12 +112,20 @@ const ImgUpload =  () => {
             </span>
           </div>
         </div>
+        <button onClick={handle}> yubor</button>
         <div className="edit-page">
           <Link>
             <i className="fa-solid fa-pen-to-square"></i> &nbsp; Edit profile{" "}
           </Link>
         </div>
+       
+        <div className={ per > 0 && per < 100 ? "proces2": "proces"}>
+                 <h1>{per}</h1>
+         </div>
+     
+        
       </div>
+    
     )
 };
 
