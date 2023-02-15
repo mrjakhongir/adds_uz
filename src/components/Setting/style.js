@@ -36,6 +36,9 @@ export const Settings = styled.div `
             background-color: white;
             top: 60px;
             right:9px;
+            .labelFile{
+              cursor:pointer;
+            }
             input{
               display:none;
             }

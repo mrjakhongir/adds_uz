@@ -8,6 +8,7 @@ import AuthSidebar from "../../components/AuthSidebar/AuthSidebar";
 const Auth = () => {
   return (
     <div>
+      
       <OpenerC>
         <Container>
           <Navbar />

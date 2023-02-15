@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ErrorDiv = styled.div`
-
     width: 100%;
     height: 100vh;
     max-width: 904px;
