@@ -2,19 +2,22 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Settings } from "./style";
-// import axios from "axios";
-
 import { Rigister } from "../../contex/Contex";
 import person from "../../assets/icon/person.svg";
-
 import ImgUpload from "./ImgUpload";
 
 const Setting = () => {
-  const imgData = JSON.parse(localStorage.getItem("profil_img"));
-  const imgDataValue = imgData.photo_url;
+  const [token, setToken] = useContext(Rigister);
+  const res = JSON.parse(token);
   const [fullName2, setFulname] = useState("");
   const [userName, setUserName] = useState("");
-  const [token, setToken] = useContext(Rigister);
+  const imgData = JSON.parse(localStorage.getItem("profil_img"));
+  const defaulImg = "https://adds-media-bucket.s3.ap-southeast-1.amazonaws.com/8849ee9d-7e63-4001-9e4d-25320b309681.png"
+  const imgDataValue = !imgData.photo_url ? defaulImg : imgData.photo_url;
+  const defaultFullName = !fullName2 ? res.full_name : fullName2;
+  const defaultUserName = !userName ? res.user_name :  userName
+
+
 
   const navigate = useNavigate();
 
@@ -24,13 +27,13 @@ const Setting = () => {
       navigate("/");
     }
   };
-  const res = JSON.parse(token);
+ 
   const handleSubmit2 = () => {
-    if (fullName2 && userName) {
+    if (defaultFullName && defaultUserName) {
       const data = {
-        full_name: fullName2,
+        full_name: defaultFullName,
         profile_photo: imgDataValue,
-        username: userName,
+        username: defaultUserName,
       };
 
       fetch("http://azizbek.samandardev.uz/v1/user/profile", {
@@ -77,7 +80,7 @@ const Setting = () => {
               <input
                 type="text"
                 onChange={(e) => setUserName(e.target.value)}
-                placeholder={"@" + res.user_name}
+                placeholder={ res.user_name}
               />
             </label>
             <br />

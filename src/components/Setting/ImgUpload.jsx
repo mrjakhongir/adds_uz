@@ -1,74 +1,61 @@
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Rigister } from "../../contex/Contex";
-import { useContext,useEffect} from "react";
+import { useContext, useEffect } from "react";
 import axios from "axios";
-import "./main.css"
+import "./main.css";
 import img from "../../assets/png/user3.png";
 import copy from "copy-to-clipboard";
 
-
 import { useState } from "react";
 
-const ImgUpload =  () => {
-    const [token,setToken] = useContext(Rigister)
-    const [file,setFile] = useState();
-    const [per,setPer] = useState()
+const ImgUpload = () => {
+  const [token, setToken] = useContext(Rigister);
+  const [file, setFile] = useState();
+  const [per, setPer] = useState(null);
 
-    const res = JSON.parse(token)
+  const res = JSON.parse(token);
 
-    const copyToClipboard = () => {
-        copy(res.user_name);
-        alert(`You have copied "${res.user_name}"`);
-     }
-    
-    let formData = new FormData();
-    formData.set('file', file);
-     console.log(formData);
+  const copyToClipboard = () => {
+    copy(res.user_name);
+    alert(`You have copied "${res.user_name}"`);
+  };
 
-     useEffect(() => {
-      handle()
-     }, [file]);
-
-
-     const handle = () => {
-      
-      formData.set('file', file);
-           if(formData){
-        axios.post("http://azizbek.samandardev.uz/v1/media", formData, {
-            headers: {
-                  'Authorization': `${res.access_token}`,
-                  'Content-Type': 'multipart/form-data'
-                },
-                onUploadProgress: progressEvent => {
-              const percentCompleted = Math.round(
-                (progressEvent.loaded * 100) / progressEvent.total
-              );
-              console.log(`upload process: ${percentCompleted}%`);
-              setPer(percentCompleted)
-              
-            }
-          })
-            .then(res => {
-              console.log(res.data)
-              localStorage.setItem("profil_img", JSON.stringify(res.data))
-            })
-    }
-  
-  }
+  let formData = new FormData();
+  formData.set("file", file);
  
+    if(file) {
+      axios
+        .post("http://azizbek.samandardev.uz/v1/media", formData, {
+          headers: {
+            Authorization: `${res.access_token}`,
+            "Content-Type": "multipart/form-data",
+          },
+          onUploadProgress: (progressEvent) => {
+            const percentCompleted = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total
+            );
+            console.log(`upload process: ${percentCompleted}%`);
+            setPer(percentCompleted);
+          },
+        })
+    
+        .then((res) => {
+          console.log(res.data);
+          localStorage.setItem("profil_img", JSON.stringify(res.data));
+         
+        });
+        setFile(null)
+    }
 
 
-
-
-    return(
-        <div className="seting-profil-con">
-        <div className="setting-profil">
-          <div className="img-page">
-            <p>{per}</p>
-            <img src={res.profile_photo ? res.profile_photo : img} alt="" />
-            <div className="chose-file">
-               <label htmlFor="file" className="labelFile">
-               <svg 
+  return (
+    <div className="seting-profil-con">
+      <div className="setting-profil">
+        <div className="img-page">
+          <img src={res.profile_photo ? res.profile_photo : img} alt="" />
+          <div className="chose-file">
+            <label htmlFor="file" className="labelFile">
+              <svg
                 width="8"
                 height="8"
                 viewBox="0 0 8 8"
@@ -80,53 +67,48 @@ const ImgUpload =  () => {
                   fill="black"
                 />
               </svg>
-               
-               </label>
-               
-            
-             
-               <input id="file" type="file" onChange={(e) => setFile(e.target.files[0])} />
-              
+            </label>
 
-            </div>
-          </div>
-          
-         
-          <div onClick={copyToClipboard}  className="profil-text">
-            <p>{res.full_name}</p>
-            <span >
-              @{res.user_name}&nbsp;
-              <svg
-            
-                width="10"
-                height="10"
-                viewBox="0 0 10 10"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M9.5 3.47C9.49479 3.42407 9.48474 3.37882 9.47 3.335V3.29C9.44596 3.23859 9.41389 3.19133 9.375 3.15L6.375 0.15C6.33367 0.111108 6.28641 0.0790405 6.235 0.0549999C6.22008 0.05288 6.20493 0.05288 6.19 0.0549999C6.13921 0.0258706 6.08311 0.0071721 6.025 0H4C3.60218 0 3.22064 0.158035 2.93934 0.43934C2.65804 0.720644 2.5 1.10218 2.5 1.5V2H2C1.60218 2 1.22064 2.15804 0.93934 2.43934C0.658035 2.72064 0.5 3.10218 0.5 3.5V8.5C0.5 8.89782 0.658035 9.27936 0.93934 9.56066C1.22064 9.84196 1.60218 10 2 10H6C6.39782 10 6.77936 9.84196 7.06066 9.56066C7.34196 9.27936 7.5 8.89782 7.5 8.5V8H8C8.39782 8 8.77936 7.84196 9.06066 7.56066C9.34196 7.27936 9.5 6.89782 9.5 6.5V3.5C9.5 3.5 9.5 3.5 9.5 3.47ZM6.5 1.705L7.795 3H7C6.86739 3 6.74021 2.94732 6.64645 2.85355C6.55268 2.75979 6.5 2.63261 6.5 2.5V1.705ZM6.5 8.5C6.5 8.63261 6.44732 8.75979 6.35355 8.85355C6.25979 8.94732 6.13261 9 6 9H2C1.86739 9 1.74021 8.94732 1.64645 8.85355C1.55268 8.75979 1.5 8.63261 1.5 8.5V3.5C1.5 3.36739 1.55268 3.24021 1.64645 3.14645C1.74021 3.05268 1.86739 3 2 3H2.5V6.5C2.5 6.89782 2.65804 7.27936 2.93934 7.56066C3.22064 7.84196 3.60218 8 4 8H6.5V8.5ZM8.5 6.5C8.5 6.63261 8.44732 6.75979 8.35355 6.85355C8.25979 6.94732 8.13261 7 8 7H4C3.86739 7 3.74021 6.94732 3.64645 6.85355C3.55268 6.75979 3.5 6.63261 3.5 6.5V1.5C3.5 1.36739 3.55268 1.24021 3.64645 1.14645C3.74021 1.05268 3.86739 1 4 1H5.5V2.5C5.5 2.89782 5.65804 3.27936 5.93934 3.56066C6.22064 3.84196 6.60218 4 7 4H8.5V6.5Z"
-                  fill="#8B8B8B"
-                />
-              </svg>
-            </span>
+            <input
+              id="file"
+              type="file"
+              onChange={(e) => setFile(e.target.files[0])}
+            />
           </div>
         </div>
-        <button onClick={handle}> yubor</button>
-        <div className="edit-page">
-          <Link>
-            <i className="fa-solid fa-pen-to-square"></i> &nbsp; Edit profile{" "}
-          </Link>
+
+        <div onClick={copyToClipboard} className="profil-text">
+          <p>{res.full_name}</p>
+          <span>
+            @{res.user_name}&nbsp;
+            <svg
+              width="10"
+              height="10"
+              viewBox="0 0 10 10"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.5 3.47C9.49479 3.42407 9.48474 3.37882 9.47 3.335V3.29C9.44596 3.23859 9.41389 3.19133 9.375 3.15L6.375 0.15C6.33367 0.111108 6.28641 0.0790405 6.235 0.0549999C6.22008 0.05288 6.20493 0.05288 6.19 0.0549999C6.13921 0.0258706 6.08311 0.0071721 6.025 0H4C3.60218 0 3.22064 0.158035 2.93934 0.43934C2.65804 0.720644 2.5 1.10218 2.5 1.5V2H2C1.60218 2 1.22064 2.15804 0.93934 2.43934C0.658035 2.72064 0.5 3.10218 0.5 3.5V8.5C0.5 8.89782 0.658035 9.27936 0.93934 9.56066C1.22064 9.84196 1.60218 10 2 10H6C6.39782 10 6.77936 9.84196 7.06066 9.56066C7.34196 9.27936 7.5 8.89782 7.5 8.5V8H8C8.39782 8 8.77936 7.84196 9.06066 7.56066C9.34196 7.27936 9.5 6.89782 9.5 6.5V3.5C9.5 3.5 9.5 3.5 9.5 3.47ZM6.5 1.705L7.795 3H7C6.86739 3 6.74021 2.94732 6.64645 2.85355C6.55268 2.75979 6.5 2.63261 6.5 2.5V1.705ZM6.5 8.5C6.5 8.63261 6.44732 8.75979 6.35355 8.85355C6.25979 8.94732 6.13261 9 6 9H2C1.86739 9 1.74021 8.94732 1.64645 8.85355C1.55268 8.75979 1.5 8.63261 1.5 8.5V3.5C1.5 3.36739 1.55268 3.24021 1.64645 3.14645C1.74021 3.05268 1.86739 3 2 3H2.5V6.5C2.5 6.89782 2.65804 7.27936 2.93934 7.56066C3.22064 7.84196 3.60218 8 4 8H6.5V8.5ZM8.5 6.5C8.5 6.63261 8.44732 6.75979 8.35355 6.85355C8.25979 6.94732 8.13261 7 8 7H4C3.86739 7 3.74021 6.94732 3.64645 6.85355C3.55268 6.75979 3.5 6.63261 3.5 6.5V1.5C3.5 1.36739 3.55268 1.24021 3.64645 1.14645C3.74021 1.05268 3.86739 1 4 1H5.5V2.5C5.5 2.89782 5.65804 3.27936 5.93934 3.56066C6.22064 3.84196 6.60218 4 7 4H8.5V6.5Z"
+                fill="#8B8B8B"
+              />
+            </svg>
+          </span>
         </div>
-       
-        <div className={ per > 0 && per < 100 ? "proces2": "proces"}>
-                 <h1>{per}</h1>
-         </div>
-     
-        
       </div>
-    
-    )
+      <div className="edit-page">
+        <Link>
+          <i className="fa-solid fa-pen-to-square"></i> &nbsp; Edit profile{" "}
+        </Link>
+      </div>
+
+      <div className={per > 0 && per < 100 ? "proces2" : "proces"}>
+        {/* <div className="proces2"> */}
+
+        <div className="proc" style={{ width: `${per}%` }}></div>
+      </div>
+    </div>
+  );
 };
 
-export default ImgUpload
+export default ImgUpload;

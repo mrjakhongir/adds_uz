@@ -4,39 +4,42 @@ import { Link, useNavigate } from "react-router-dom";
 import tel from "../../../assets/icon/tel.svg";
 import HomePage from "../../HomePage/HomePage";
 import { Rigister } from "../../../contex/Contex";
+import { request } from "../../../request/Axios";
 
 const Finsh = () => {
-  const  faceProfilImg = `{"photo_url":"","media_type":"image"}`
+  const faceProfilImg = `{"photo_url":"","media_type":"image"}`;
   const [token, setToken] = useContext(Rigister);
   const [ful_name, setFulname] = useState("");
   const [password, setPassword] = useState("");
   const faceToken = localStorage.getItem("faceToken");
 
   const navigate = useNavigate();
-  const updatePost = async () => {
+
+
+  const removeLocalTel = () => {
+    setTimeout(() => {
+      localStorage.removeItem("faceToken");
+    }, 9000);
+  };
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
     if (ful_name && password) {
-      const requestOptions = {
-        method: "PUT",
+      request({
+        url: "/user/register/finish",
+        method: "put",
+        data: { full_name: ful_name, password: password },
         headers: {
           Authorization: faceToken,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          full_name: ful_name,
-          password: password,
-        }),
-      };
-      const response = await fetch("http://azizbek.samandardev.uz/v1/user/register/finish", requestOptions);
-      const data = await response.json();
-      console.log(
-        `{full_name:${data.full_name},access_token:${data.access_token}}`
-      );
-      setToken(
-       JSON.stringify(data)
-      );
-      localStorage.setItem("profil_img",faceProfilImg)
-
-      navigate("/");
+      }).then((res) => {
+        console.log(res);
+        setToken(JSON.stringify(res.data));
+        localStorage.setItem("profil_img", faceProfilImg);
+        removeLocalTel()
+        navigate("/");
+      })
+      
     }
   };
 
@@ -49,7 +52,8 @@ const Finsh = () => {
         </Link>
         <div className="register">
           <p className="register-title">Create your permanent password</p>
-          
+
+          <form action="#" onSubmit={handleFormSubmit}>
             <label className="input-name">
               <div className="input-name-icon">
                 <img src={tel} alt="" />
@@ -75,10 +79,10 @@ const Finsh = () => {
               />
             </label>
 
-            <button onClick={updatePost} className="reg-btn">
+            <button type="submit" className="reg-btn">
               Register
             </button>
-         
+          </form>
         </div>
       </SigininCon>
     </>

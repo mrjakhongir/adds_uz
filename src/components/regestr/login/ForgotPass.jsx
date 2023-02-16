@@ -1,24 +1,22 @@
-import { useState, } from "react";
+import { useState } from "react";
 import { SigininCon } from "./style";
 import { Link, useNavigate } from "react-router-dom";
 import tel from "../../../assets/icon/tel.svg";
 import HomePage from "../../HomePage/HomePage";
-
+import { request } from "../../../request/Axios";
 
 const ForgotPass = () => {
-
   const [phone, setPhone] = useState("");
-  localStorage.setItem("telnumber", phone)
+  localStorage.setItem("telnumber", phone);
 
   const navigate = useNavigate();
 
   const updatePost = async () => {
-    if (phone){
-      const response = await fetch(`http://azizbek.samandardev.uz/v1/user/password/forget`);
-      const data = await response.json();
-      console.log(data);
-      
-      navigate("/register/login/newpass");
+    if (phone) {
+      request({ url: "/user/password/forget", method: "get" }).then((res) => {
+        console.log(res.data);
+        navigate("/register/login/newpass");
+      });
     }
   };
 
@@ -47,7 +45,6 @@ const ForgotPass = () => {
           <button onClick={updatePost} type="button" className="reg-btn">
             Register
           </button>
-       
         </div>
       </SigininCon>
     </>

@@ -3,6 +3,7 @@ import { SigininCon } from "./style";
 import { Link, useNavigate } from "react-router-dom";
 import tel from "../../../assets/icon/tel.svg";
 import HomePage from "../../HomePage/HomePage";
+import { request } from "../../../request/Axios";
 
 const ActiveCode = () => {
   const telnumber = localStorage.getItem("telnumber");
@@ -11,20 +12,27 @@ const ActiveCode = () => {
 
   const [codeValue, setCodeValue] = useState("");
 
-  // const removeLocalTel = () => {
-  //   setTimeout(() => {
-  //     localStorage.removeItem("telnumber");
-  //   }, 9000);
-  // };
+  const removeLocalTel = () => {
+    setTimeout(() => {
+      localStorage.removeItem("telnumber");
+    }, 9000);
+  };
 
-  const handleFormSubmit = async () => {
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
 
-      const response = await fetch( `http://azizbek.samandardev.uz/v1/user/verify/${telnumber}/${codeValue}`);
-      const data = await response.json();
-      console.log(data);
-      localStorage.setItem("faceToken", data.access_token);
-      navigate("/register/finsh");
-   
+    if (telnumber && codeValue) {
+      request({
+        url: `/user/verify/${telnumber}/${codeValue}`,
+        method: "get",
+        data: "",
+      }).then((res) => {
+        console.log(res.data.access_token);
+        localStorage.setItem("faceToken", res.data.access_token);
+        removeLocalTel()
+        navigate("/register/finsh");
+      });
+    }
   };
 
   return (
@@ -36,7 +44,8 @@ const ActiveCode = () => {
         </Link>
         <div className="register">
           <p className="register-title">Log in/registering</p>
-       
+
+          <form onSubmit={handleFormSubmit} action="#">
             <label className="input-name">
               <div className="input-name-icon">
                 <img src={tel} alt="" />
@@ -48,7 +57,6 @@ const ActiveCode = () => {
                 value={telnumber}
               />
             </label>
-      
 
             <label className="input-name">
               <div className="input-name-icon">
@@ -58,16 +66,14 @@ const ActiveCode = () => {
               <input
                 type="text"
                 placeholder="code"
-                value={codeValue} 
+                value={codeValue}
                 onChange={(e) => setCodeValue(e.target.value)}
-
               />
             </label>
-            <button onClick={handleFormSubmit} type="submit" className="reg-btn">
+            <button type="submit" className="reg-btn">
               confrim
             </button>
-         
-     
+          </form>
         </div>
       </SigininCon>
     </>
