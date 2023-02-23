@@ -6,14 +6,16 @@ import { Rigister } from "../../contex/Contex";
 import person from "../../assets/icon/person.svg";
 import ImgUpload from "./ImgUpload";
 
+
 const Setting = () => {
   const [token, setToken] = useContext(Rigister);
   const res = JSON.parse(token);
   const [fullName2, setFulname] = useState("");
   const [userName, setUserName] = useState("");
+  const [imgUpload, setImgUpload] = useState("");
+  
   const imgData = JSON.parse(localStorage.getItem("profil_img"));
-  const defaulImg = "https://adds-media-bucket.s3.ap-southeast-1.amazonaws.com/8849ee9d-7e63-4001-9e4d-25320b309681.png"
-  const imgDataValue = !imgData.photo_url ? defaulImg : imgData.photo_url;
+  const defaultImg = imgUpload ? imgUpload : imgData.photo_url
   const defaultFullName = !fullName2 ? res.full_name : fullName2;
   const defaultUserName = !userName ? res.user_name :  userName
 
@@ -29,10 +31,11 @@ const Setting = () => {
   };
  
   const handleSubmit2 = () => {
+    console.log(defaultImg);
     if (defaultFullName && defaultUserName) {
       const data = {
         full_name: defaultFullName,
-        profile_photo: imgDataValue,
+        profile_photo: defaultImg,
         username: defaultUserName,
       };
 
@@ -58,7 +61,7 @@ const Setting = () => {
   return (
     <Settings>
       <div className="setting-con">
-        <ImgUpload />
+        <ImgUpload  setImgUpload={setImgUpload} />
         <hr />
         <div className="setting-edit">
           <p className="personal-data">Peronal data:</p>
@@ -77,6 +80,7 @@ const Setting = () => {
               <div className="input-name-icon">
                 <img src={person} alt="" />
               </div>
+              
               <input
                 type="text"
                 onChange={(e) => setUserName(e.target.value)}

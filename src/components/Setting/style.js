@@ -34,6 +34,7 @@ export const Settings = styled.div `
             position: absolute;
             border: 3px solid rgb(223, 223, 223);
             background-color: white;
+            cursor:pointer;
             top: 60px;
             right:9px;
             .labelFile{

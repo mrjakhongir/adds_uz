@@ -1,36 +1,41 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { SigininCon } from "../../Biznes/biznesregstr/style";
 import { Link, useNavigate } from "react-router-dom";
 import tel from "../../../assets/icon/tel.svg";
 import HomePage from "../../HomePage/HomePage";
 import { request } from "../../../request/Axios";
+import { Rigister } from "../../../contex/Contex";
 
-const ActiveCode = () => {
-  const telnumber = localStorage.getItem("telnumber");
+const ActivCodeEmail = () => {
+  const email = localStorage.getItem("email");
 
   const navigate = useNavigate();
-
+  const [token, setToken] = useContext(Rigister);
+  const res = JSON.parse(token);
   const [codeValue, setCodeValue] = useState("");
 
-  const removeLocalTel = () => {
-    setTimeout(() => {
-      localStorage.removeItem("telnumber");
-    }, 9000);
-  };
+//   const removeLocalTel = () => {
+//     setTimeout(() => {
+//       localStorage.removeItem("telnumber");
+//     }, 9000);
+//   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    if (telnumber && codeValue) {
+    if (email && codeValue) {
       request({
-        url: `/user/verify/${telnumber}/${codeValue}`,
+        url: `/business/verify/${email}/${codeValue}`,
         method: "get",
-        data: "",
+        headers:{
+            "Content-Type": "application/json",
+            Authorization: res.access_token,
+        }
       }).then((res) => {
         console.log(res.data.access_token);
-        localStorage.setItem("faceToken", res.data.access_token);
-        removeLocalTel();
-        navigate("/register/finsh");
+        localStorage.setItem("faceMailToken", res.data.access_token);
+        // removeLocalTel();
+        navigate("/biznes/biznesregister/finshbiznesreg");
       });
     }
   };
@@ -53,8 +58,8 @@ const ActiveCode = () => {
 
               <input
                 type="text"
-                placeholder="+998 (90) ___ __ __"
-                value={telnumber}
+                placeholder="adds@gmaiil.com"
+                value={email}
               />
             </label>
 
@@ -65,7 +70,7 @@ const ActiveCode = () => {
 
               <input
                 type="text"
-                placeholder="code"
+                placeholder="Active code"
                 value={codeValue}
                 onChange={(e) => setCodeValue(e.target.value)}
               />
@@ -80,4 +85,4 @@ const ActiveCode = () => {
   );
 };
 
-export default ActiveCode;
+export default ActivCodeEmail;

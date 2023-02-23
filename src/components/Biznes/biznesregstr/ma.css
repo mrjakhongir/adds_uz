@@ -1,0 +1,13 @@
+.logo{
+    position: absolute;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-bottom: 1px solid black;
+    outline: none;
+}
+.logo:focus{
+    
+}

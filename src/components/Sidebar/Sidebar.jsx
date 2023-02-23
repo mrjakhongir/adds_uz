@@ -32,7 +32,7 @@ function openRodal(){
         <Personal>
           <Personal.Photo>
              <img  src={res.profile_photo ? res.profile_photo  : img } alt="" />
-             <Personal.Photo.Live />
+             {/* <Personal.Photo.Live /> */}
           </Personal.Photo>
           <Personal.Name>
             <h3>{res.full_name}</h3>

@@ -15,9 +15,7 @@ background: #FFFFFF;
 border-radius: 8px;
 .mark-personal{
     display: flex;
-    :hover{
-        cursor: pointer;
-    }
+   
 }
 .search{
     width: 48%;
@@ -33,16 +31,7 @@ input{
     outline: none;
     border: none;
 }
-.mark-personal{
-display: flex;
-align-items: center;
-.siginin{
-    background: #fff;
-    color:blue;
-    text-decoration: underline;
-    
-    
-}
+
 }
  .href{
     text-decaration:none;

@@ -8,7 +8,7 @@ import copy from "copy-to-clipboard";
 
 import { useState } from "react";
 
-const ImgUpload = () => {
+const ImgUpload = ({setImgUpload}) => {
   const [token, setToken] = useContext(Rigister);
   const [file, setFile] = useState();
   const [per, setPer] = useState(null);
@@ -42,6 +42,7 @@ const ImgUpload = () => {
         .then((res) => {
           console.log(res.data);
           localStorage.setItem("profil_img", JSON.stringify(res.data));
+          setImgUpload(res.data.photo_url)
          
         });
         setFile(null)
@@ -53,8 +54,10 @@ const ImgUpload = () => {
       <div className="setting-profil">
         <div className="img-page">
           <img src={res.profile_photo ? res.profile_photo : img} alt="" />
+          <form  enctype="multipart/form-data" action="/upload" method="post">
+          <label htmlFor="file" className="labelFile">
           <div className="chose-file">
-            <label htmlFor="file" className="labelFile">
+          
               <svg
                 width="8"
                 height="8"
@@ -67,7 +70,7 @@ const ImgUpload = () => {
                   fill="black"
                 />
               </svg>
-            </label>
+          
 
             <input
               id="file"
@@ -75,6 +78,8 @@ const ImgUpload = () => {
               onChange={(e) => setFile(e.target.files[0])}
             />
           </div>
+          </label>
+          </form>
         </div>
 
         <div onClick={copyToClipboard} className="profil-text">
@@ -96,6 +101,7 @@ const ImgUpload = () => {
           </span>
         </div>
       </div>
+ 
       <div className="edit-page">
         <Link>
           <i className="fa-solid fa-pen-to-square"></i> &nbsp; Edit profile{" "}
