@@ -1,0 +1,62 @@
+.mark-personal{
+    display: flex;
+    position: relative;
+}
+.save{
+    margin-right: 10px;
+}
+.user{
+    width: 40px ;
+    height: 40px;
+    border-radius: 50%;
+    background: #F9F9F9;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rodalPage{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: calc(100% + 4px);
+    right: 0;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 8px 28px -6px rgb(24 39 75 / 12%), 0 18px 88px -4px rgb(24 39 75 / 14%);
+    padding: 13px 0;
+    align-items: center;
+    
+    
+}
+ul li{
+    padding: 6px 18px;
+    list-style: none;
+    white-space: nowrap;
+    line-height: 20px;
+    cursor: pointer;
+    text-align: center;
+    display: flex; 
+    color: black;
+}
+ul li:hover{
+    background-color: #F5F5F5;
+}
+.logImg{
+    margin-top: 1px;
+    margin-right: 6px;
+}
+.biznesLink{
+    color:black ;
+}
+ 
+.border{
+    width: 70px;
+    height: 1px;
+    border: 0;
+    background-color: #d2d2d2;
+    margin: 6px 12px 6px 25px;
+}

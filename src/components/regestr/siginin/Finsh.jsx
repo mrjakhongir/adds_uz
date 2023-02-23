@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { SigininCon } from "./style";
+import { SigininCon } from "../../Biznes/biznesregstr/style";
 import { Link, useNavigate } from "react-router-dom";
 import tel from "../../../assets/icon/tel.svg";
 import HomePage from "../../HomePage/HomePage";
@@ -14,7 +14,6 @@ const Finsh = () => {
   const faceToken = localStorage.getItem("faceToken");
 
   const navigate = useNavigate();
-
 
   const removeLocalTel = () => {
     setTimeout(() => {
@@ -36,10 +35,9 @@ const Finsh = () => {
         console.log(res);
         setToken(JSON.stringify(res.data));
         localStorage.setItem("profil_img", faceProfilImg);
-        removeLocalTel()
+        removeLocalTel();
         navigate("/");
-      })
-      
+      });
     }
   };
 

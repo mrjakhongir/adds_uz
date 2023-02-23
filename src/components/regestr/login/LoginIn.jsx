@@ -7,6 +7,7 @@ import { Rigister } from "../../../contex/Contex";
 import { request } from "../../../request/Axios";
 
 const Finsh = () => {
+  const faceProfilImg = `{"photo_url":"","media_type":"image"}`;
   const [token, setToken] = useContext(Rigister);
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -21,6 +22,7 @@ const Finsh = () => {
           if (res.status === 200) {
             setToken(JSON.stringify(res.data));
           }
+          localStorage.setItem("profil_img", faceProfilImg);
           navigate("/");
         }
       );

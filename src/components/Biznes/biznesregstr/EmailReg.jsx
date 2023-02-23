@@ -1,27 +1,35 @@
 import React from "react";
-import { useState } from "react";
-import { SigininCon } from "../../Biznes/biznesregstr/style";
+import { useState,useContext } from "react";
+import { SigininCon } from "./style";
 import { Link, useNavigate } from "react-router-dom";
 import tel from "../../../assets/icon/tel.svg";
 import HomePage from "../../HomePage/HomePage";
 import { request } from "../../../request/Axios";
+import { Rigister } from "../../../contex/Contex";
 
-const Siginin = () => {
-  const [telnumber, setnumber] = useState("");
+const EmailReg = () => {
+    const [token, setToken] = useContext(Rigister);
+    const res = JSON.parse(token);
+  const [email, setEmail] = useState("");
 
   const navigate = useNavigate();
-  localStorage.setItem("telnumber", telnumber);
+  localStorage.setItem("email", email);
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    if (telnumber) {
+    if (email) {
+        console.log(email);
       request({
-        url: "/user/register",
+        url: "/business/register",
         method: "post",
-        data: { phone_number: telnumber },
+        data: { email: email },
+        headers:{
+            "Content-Type": "application/json",
+            Authorization: res.access_token,
+        }
       }).then((json) => {
         console.log(json.data);
-        navigate("/register/activcode");
+        navigate("/biznes/biznesregister/activecodeEmail");
       });
     }
   };
@@ -33,7 +41,7 @@ const Siginin = () => {
           <div className="filter-blur"></div>
         </Link>
         <div className="register">
-          <p className="register-title">Log in/registering</p>
+          <p className="register-title">Type your email</p>
           <form onSubmit={handleFormSubmit}>
             <label className="input-name">
               <div className="input-name-icon">
@@ -41,16 +49,16 @@ const Siginin = () => {
               </div>
 
               <input
-                type="text"
-                value={telnumber}
-                onChange={(e) => setnumber(e.target.value)}
-                placeholder="+998 (90) ___ __ __"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="adds@gmail.com"
               />
             </label>
 
-            <Link to="/register/login" className="loginIn">
+            {/* <Link to="/register/login" className="loginIn">
               Login in
-            </Link>
+            </Link> */}
             <button type="submit" className="reg-btn">
               Confirm
             </button>
@@ -61,4 +69,4 @@ const Siginin = () => {
   );
 };
 
-export default Siginin;
+export default EmailReg;

@@ -46,6 +46,7 @@ Action.NoLive = styled(noLive)`
 position:absolute;
 top: 0px;
 right: 0px
+
 `
 Action.Bookmark = styled(bookmark)`
 `
